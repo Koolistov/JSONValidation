@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C72C09071350BCFF00E37508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C09061350BCFF00E37508 /* Foundation.framework */; };
+		C72C09121350BCFF00E37508 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C09111350BCFF00E37508 /* UIKit.framework */; };
+		C72C09131350BCFF00E37508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C09061350BCFF00E37508 /* Foundation.framework */; };
+		C72C09151350BCFF00E37508 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C09141350BCFF00E37508 /* CoreGraphics.framework */; };
+		C72C09181350BCFF00E37508 /* libJSONValidation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C09031350BCFF00E37508 /* libJSONValidation.a */; };
+		C72C091E1350BCFF00E37508 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C72C091C1350BCFF00E37508 /* InfoPlist.strings */; };
+		C72C09211350BCFF00E37508 /* JSONValidationTests.h in Resources */ = {isa = PBXBuildFile; fileRef = C72C09201350BCFF00E37508 /* JSONValidationTests.h */; };
+		C72C09231350BCFF00E37508 /* JSONValidationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C72C09221350BCFF00E37508 /* JSONValidationTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C72C09161350BCFF00E37508 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C72C08FA1350BCFF00E37508 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C72C09021350BCFF00E37508;
+			remoteInfo = JSONValidation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C72C09031350BCFF00E37508 /* libJSONValidation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJSONValidation.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C72C09061350BCFF00E37508 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C72C090A1350BCFF00E37508 /* JSONValidation-Prefix.pch */ = {isa = PBXFileReference; path = "JSONValidation-Prefix.pch"; sourceTree = "<group>"; };
+		C72C09101350BCFF00E37508 /* JSONValidationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONValidationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C72C09111350BCFF00E37508 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C72C09141350BCFF00E37508 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C72C091B1350BCFF00E37508 /* JSONValidationTests-Info.plist */ = {isa = PBXFileReference; path = "JSONValidationTests-Info.plist"; sourceTree = "<group>"; };
+		C72C091D1350BCFF00E37508 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C72C091F1350BCFF00E37508 /* JSONValidationTests-Prefix.pch */ = {isa = PBXFileReference; path = "JSONValidationTests-Prefix.pch"; sourceTree = "<group>"; };
+		C72C09201350BCFF00E37508 /* JSONValidationTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONValidationTests.h; sourceTree = "<group>"; };
+		C72C09221350BCFF00E37508 /* JSONValidationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONValidationTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C72C09001350BCFF00E37508 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C72C09071350BCFF00E37508 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C72C090C1350BCFF00E37508 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C72C09121350BCFF00E37508 /* UIKit.framework in Frameworks */,
+				C72C09131350BCFF00E37508 /* Foundation.framework in Frameworks */,
+				C72C09151350BCFF00E37508 /* CoreGraphics.framework in Frameworks */,
+				C72C09181350BCFF00E37508 /* libJSONValidation.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C72C08F81350BCFF00E37508 = {
+			isa = PBXGroup;
+			children = (
+				C72C09081350BCFF00E37508 /* JSONValidation */,
+				C72C09191350BCFF00E37508 /* JSONValidationTests */,
+				C72C09051350BCFF00E37508 /* Frameworks */,
+				C72C09041350BCFF00E37508 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C72C09041350BCFF00E37508 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C72C09031350BCFF00E37508 /* libJSONValidation.a */,
+				C72C09101350BCFF00E37508 /* JSONValidationTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C72C09051350BCFF00E37508 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C72C09061350BCFF00E37508 /* Foundation.framework */,
+				C72C09111350BCFF00E37508 /* UIKit.framework */,
+				C72C09141350BCFF00E37508 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C72C09081350BCFF00E37508 /* JSONValidation */ = {
+			isa = PBXGroup;
+			children = (
+				C72C09091350BCFF00E37508 /* Supporting Files */,
+			);
+			path = JSONValidation;
+			sourceTree = "<group>";
+		};
+		C72C09091350BCFF00E37508 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C72C090A1350BCFF00E37508 /* JSONValidation-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C72C09191350BCFF00E37508 /* JSONValidationTests */ = {
+			isa = PBXGroup;
+			children = (
+				C72C09201350BCFF00E37508 /* JSONValidationTests.h */,
+				C72C09221350BCFF00E37508 /* JSONValidationTests.m */,
+				C72C091A1350BCFF00E37508 /* Supporting Files */,
+			);
+			path = JSONValidationTests;
+			sourceTree = "<group>";
+		};
+		C72C091A1350BCFF00E37508 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C72C091B1350BCFF00E37508 /* JSONValidationTests-Info.plist */,
+				C72C091C1350BCFF00E37508 /* InfoPlist.strings */,
+				C72C091F1350BCFF00E37508 /* JSONValidationTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C72C09011350BCFF00E37508 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C72C09021350BCFF00E37508 /* JSONValidation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C72C09261350BCFF00E37508 /* Build configuration list for PBXNativeTarget "JSONValidation" */;
+			buildPhases = (
+				C72C08FF1350BCFF00E37508 /* Sources */,
+				C72C09001350BCFF00E37508 /* Frameworks */,
+				C72C09011350BCFF00E37508 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSONValidation;
+			productName = JSONValidation;
+			productReference = C72C09031350BCFF00E37508 /* libJSONValidation.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C72C090F1350BCFF00E37508 /* JSONValidationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C72C09291350BCFF00E37508 /* Build configuration list for PBXNativeTarget "JSONValidationTests" */;
+			buildPhases = (
+				C72C090B1350BCFF00E37508 /* Sources */,
+				C72C090C1350BCFF00E37508 /* Frameworks */,
+				C72C090D1350BCFF00E37508 /* Resources */,
+				C72C090E1350BCFF00E37508 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C72C09171350BCFF00E37508 /* PBXTargetDependency */,
+			);
+			name = JSONValidationTests;
+			productName = JSONValidationTests;
+			productReference = C72C09101350BCFF00E37508 /* JSONValidationTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C72C08FA1350BCFF00E37508 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = Koolistov;
+			};
+			buildConfigurationList = C72C08FD1350BCFF00E37508 /* Build configuration list for PBXProject "JSONValidation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C72C08F81350BCFF00E37508;
+			productRefGroup = C72C09041350BCFF00E37508 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C72C09021350BCFF00E37508 /* JSONValidation */,
+				C72C090F1350BCFF00E37508 /* JSONValidationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C72C090D1350BCFF00E37508 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C72C091E1350BCFF00E37508 /* InfoPlist.strings in Resources */,
+				C72C09211350BCFF00E37508 /* JSONValidationTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C72C090E1350BCFF00E37508 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C72C08FF1350BCFF00E37508 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C72C090B1350BCFF00E37508 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C72C09231350BCFF00E37508 /* JSONValidationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C72C09171350BCFF00E37508 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C72C09021350BCFF00E37508 /* JSONValidation */;
+			targetProxy = C72C09161350BCFF00E37508 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C72C091C1350BCFF00E37508 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C72C091D1350BCFF00E37508 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C72C09241350BCFF00E37508 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C72C09251350BCFF00E37508 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		C72C09271350BCFF00E37508 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/JSONValidation.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JSONValidation/JSONValidation-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C72C09281350BCFF00E37508 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/JSONValidation.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JSONValidation/JSONValidation-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C72C092A1350BCFF00E37508 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JSONValidationTests/JSONValidationTests-Prefix.pch";
+				INFOPLIST_FILE = "JSONValidationTests/JSONValidationTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C72C092B1350BCFF00E37508 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JSONValidationTests/JSONValidationTests-Prefix.pch";
+				INFOPLIST_FILE = "JSONValidationTests/JSONValidationTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C72C08FD1350BCFF00E37508 /* Build configuration list for PBXProject "JSONValidation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C72C09241350BCFF00E37508 /* Debug */,
+				C72C09251350BCFF00E37508 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C72C09261350BCFF00E37508 /* Build configuration list for PBXNativeTarget "JSONValidation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C72C09271350BCFF00E37508 /* Debug */,
+				C72C09281350BCFF00E37508 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C72C09291350BCFF00E37508 /* Build configuration list for PBXNativeTarget "JSONValidationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C72C092A1350BCFF00E37508 /* Debug */,
+				C72C092B1350BCFF00E37508 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C72C08FA1350BCFF00E37508 /* Project object */;
+}

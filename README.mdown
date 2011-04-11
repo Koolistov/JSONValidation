@@ -1,0 +1,24 @@
+JSON VALIDATION
+===============
+
+TBD
+
+USAGE
+-----
+TBD
+
+SAMPLE
+------
+TBD
+
+LICENSE
+-------
+Copyright 2011 Koolistov. All rights reserved. DO NOT COPY!
+
+AUTHOR
+------
+Johan Kool is an developer of iOS and Mac OS X (Cocoa and Cocoa touch) software. If you wish to hire me, please look at [www.koolistov.net/services](http://www.koolistov.net/services/).
+
+-- Thanks!
+
+   Johan

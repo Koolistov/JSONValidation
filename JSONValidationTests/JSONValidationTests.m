@@ -28,7 +28,9 @@
 
 - (void)testType {
     NSError *error;
-    BOOL valid = [validator validateJSONValue:[@"{\"test\":\"test 1\"}" JSONValue] withSchema:[@"{\"type\" : \"object\"}" JSONValue] error:&error];
+    BOOL valid = NO;
+    
+    valid = [validator validateJSONValue:[@"{\"test\":\"test 1\"}" JSONValue] withSchema:[@"{\"type\" : \"object\"}" JSONValue] error:&error];
     STAssertTrue(valid, @"Expected type 'object.' (error: %@)", error);
 
     valid = [validator validateJSONValue:[@"{\"test\":\"test 1\"}" JSONValue] withSchema:[@"{\"type\" : \"number\"}" JSONValue] error:&error];
@@ -49,7 +51,15 @@
 }
 
 - (void)testRequired {
-    //    STFail(@"Unit tests are not implemented yet in JSONValidationTests");
+    NSError *error;
+    BOOL valid = NO;
+    
+    valid = [validator validateJSONValue:[@"{\"test\":\"test 1\"}" JSONValue] withSchema:[@"{\"type\":\"object\",\"properties\":{\"test\":{\"type\":\"string\",\"required\":true}}}" JSONValue] error:&error];
+    STAssertTrue(valid, @"Expected property 'test.' (error: %@)", error);
+    
+    valid = [validator validateJSONValue:[@"{\"test\":\"test 1\"}" JSONValue] withSchema:[@"{\"type\":\"object\",\"properties\":{\"test2\":{\"type\":\"string\",\"required\":true}}}" JSONValue] error:&error];
+    STAssertFalse(valid, @"Expected property 'test2.' (error: %@)", error);
+    STAssertNotNil(error, @"Expected an error. (error: %@)", error);
 }
 
 @end

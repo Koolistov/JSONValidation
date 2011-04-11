@@ -12,13 +12,32 @@ NSString * const KVJSONValidatorDomain;
 
 typedef enum {
     KVJSONValidatorErrorInvalidType,
-    KVJSONValidatorErrorMissingProperty
+    KVJSONValidatorErrorMissingProperty,
+    KVJSONValidatorErrorNonConformingProperty,
+    KVJSONValidatorErrorMissingItem,
+    KVJSONValidatorErrorNonConformingItem,
+    KVJSONValidatorErrorTooFewItems,
+    KVJSONValidatorErrorTooManyItems,
+    KVJSONValidatorErrorNotUniqueItems,
+    KVJSONValidatorErrorPatternMismatch,
+    KVJSONValidatorErrorTooShortString,
+    KVJSONValidatorErrorTooLongString,
+    KVJSONValidatorErrorNotEnumeratedString,
+    KVJSONValidatorErrorTooSmallNumber,
+    KVJSONValidatorErrorTooBigNumber
 } KVJSONValidatorError;
 
 @interface KVJSONValidator : NSObject {
     
 }
 
-- (BOOL)validateJSONValue:(id)JSONValue withSchema:(NSDictionary *)JSONSchema error:(NSError **)error;
+- (BOOL)validateJSONSchema:(NSDictionary *)schema error:(NSError **)error;
+- (BOOL)validateJSONValue:(id)value withSchema:(NSDictionary *)schema error:(NSError **)error;
+
+@end
+
+@interface NSObject (JSONValidation)
+
+- (BOOL)kv_validateWithJSONSchema:(NSDictionary *)schema error:(NSError **)error;
 
 @end

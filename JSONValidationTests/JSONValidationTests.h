@@ -8,10 +8,11 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
+@class KVJSONValidator;
 
 @interface JSONValidationTests : SenTestCase {
 @private
-    
+    KVJSONValidator *validator;
 }
 
 @end

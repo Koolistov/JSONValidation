@@ -35,6 +35,8 @@
 		C70D6E841353483100264FF1 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = C70D6E661353470100264FF1 /* SBJsonStreamWriterState.m */; };
 		C70D6E851353483100264FF1 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = C70D6E681353470100264FF1 /* SBJsonTokeniser.m */; };
 		C70D6E861353483100264FF1 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C70D6E6A1353470100264FF1 /* SBJsonWriter.m */; };
+		C72132F31354A92B00001231 /* schema in Resources */ = {isa = PBXBuildFile; fileRef = C72132F11354A13300001231 /* schema */; };
+		C72132F41354A92B00001231 /* hyper-schema in Resources */ = {isa = PBXBuildFile; fileRef = C72132F01354A13300001231 /* hyper-schema */; };
 		C72C09071350BCFF00E37508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C09061350BCFF00E37508 /* Foundation.framework */; };
 		C72C09121350BCFF00E37508 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C09111350BCFF00E37508 /* UIKit.framework */; };
 		C72C09131350BCFF00E37508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72C09061350BCFF00E37508 /* Foundation.framework */; };
@@ -78,6 +80,8 @@
 		C70D6E691353470100264FF1 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		C70D6E6A1353470100264FF1 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		C70D6E901353527600264FF1 /* draft-zyp-json-schema-03.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "draft-zyp-json-schema-03.txt"; sourceTree = "<group>"; };
+		C72132F01354A13300001231 /* hyper-schema */ = {isa = PBXFileReference; lastKnownFileType = text; path = "hyper-schema"; sourceTree = "<group>"; };
+		C72132F11354A13300001231 /* schema */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema; sourceTree = "<group>"; };
 		C72C09031350BCFF00E37508 /* libJSONValidation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJSONValidation.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72C09061350BCFF00E37508 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C72C090A1350BCFF00E37508 /* JSONValidation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSONValidation-Prefix.pch"; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				C70D6E901353527600264FF1 /* draft-zyp-json-schema-03.txt */,
+				C72132F11354A13300001231 /* schema */,
+				C72132F01354A13300001231 /* hyper-schema */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
@@ -192,9 +198,9 @@
 		C72C09081350BCFF00E37508 /* JSONValidation */ = {
 			isa = PBXGroup;
 			children = (
-				C72C09091350BCFF00E37508 /* Supporting Files */,
 				C72C092C1350BD2300E37508 /* KVJSONValidator.h */,
 				C72C092D1350BD2300E37508 /* KVJSONValidator.m */,
+				C72C09091350BCFF00E37508 /* Supporting Files */,
 			);
 			path = JSONValidation;
 			sourceTree = "<group>";
@@ -320,6 +326,8 @@
 			files = (
 				C72C091E1350BCFF00E37508 /* InfoPlist.strings in Resources */,
 				C72C09211350BCFF00E37508 /* JSONValidationTests.h in Resources */,
+				C72132F31354A92B00001231 /* schema in Resources */,
+				C72132F41354A92B00001231 /* hyper-schema in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

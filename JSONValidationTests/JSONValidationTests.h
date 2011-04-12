@@ -13,6 +13,7 @@
 @interface JSONValidationTests : SenTestCase {
 @private
     KVJSONValidator *validator;
+    NSDictionary *schemaSchema;
 }
 
 @end

@@ -11,6 +11,7 @@
 NSString * const KVJSONValidatorDomain;
 
 typedef enum {
+    KVJSONValidatorErrorGeneral,
     KVJSONValidatorErrorInvalidType,
     KVJSONValidatorErrorMissingProperty,
     KVJSONValidatorErrorNonConformingProperty,

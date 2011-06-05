@@ -5,6 +5,28 @@
 //  Created by Johan Kool on 10-04-2011.
 //  Copyright 2011 Koolistov. All rights reserved.
 //
+//  Redistribution and use in source and binary forms, with or without modification, are 
+//  permitted provided that the following conditions are met:
+//
+//  * Redistributions of source code must retain the above copyright notice, this list of 
+//    conditions and the following disclaimer.
+//  * Redistributions in binary form must reproduce the above copyright notice, this list 
+//    of conditions and the following disclaimer in the documentation and/or other materials 
+//    provided with the distribution.
+//  * Neither the name of KOOLISTOV nor the names of its contributors may be used to 
+//    endorse or promote products derived from this software without specific prior written 
+//    permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+//  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+//  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
+//  THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+//  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT 
+//  OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
+//  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+//  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+//  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
 #import "KVJSONValidator.h"
 
@@ -16,13 +38,10 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
 - (BOOL)checkValue:(id)value isInstanceOfType:(id)typeOrTypes error:(NSError **)error;
 
 #pragma mark - Object 
-- (BOOL)checkObject:(NSDictionary *)value containsConformingProperties:(NSDictionary *)properties error:(NSError **)error;
-- (BOOL)checkObject:(NSDictionary *)value containsConformingPatternProperties:(NSDictionary *)patternProperties error:(NSError **)error;
-- (BOOL)checkObject:(NSDictionary *)value containsConformingAdditionalProperties:(id)booleanOrSchema error:(NSError **)error;
+- (BOOL)checkObject:(NSDictionary *)value containsConformingProperties:(NSDictionary *)properties patternProperties:(NSDictionary *)patternProperties additionalProperties:(id)additionalProperties error:(NSError **)error;
 
 #pragma mark - Array 
-- (BOOL)checkArray:(NSArray *)value containsConformingItems:(id)schemaOrSchemas error:(NSError **)error;
-- (BOOL)checkArray:(NSArray *)value containsConformingAdditionalItems:(id)booleanOrSchemaOrSchemas error:(NSError **)error;
+- (BOOL)checkArray:(NSArray *)value containsConformingItems:(id)items additionalItems:(id)additionalItems error:(NSError **)error;
 - (BOOL)checkArray:(NSArray *)value hasMinItems:(int)minItems error:(NSError **)error;
 - (BOOL)checkArray:(NSArray *)value hasMaxItems:(int)maxItems error:(NSError **)error;
 - (BOOL)checkArray:(NSArray *)value hasUniqueItems:(BOOL)uniqueItems error:(NSError **)error;
@@ -46,6 +65,7 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
 
 #pragma mark - General 
 - (BOOL)validateJSONSchema:(NSDictionary *)schema error:(NSError **)error {
+#warning Method not yet implemented
     if (error != NULL) {
         NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
         *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
@@ -56,6 +76,7 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
 - (BOOL)validateJSONValue:(id)value withSchema:(NSDictionary *)schema error:(NSError **)error {
     // Check if schema is valid?!
     NSParameterAssert(value != nil);
+#warning Wrong assert
     NSParameterAssert(schema != nil); // Actually, empty schema means always valid, but this is handier for debugging for now
 
     // Check value type
@@ -66,28 +87,16 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
     if ([value isKindOfClass:[NSDictionary class]]) {
         // Object checks
         NSDictionary *properties = [schema objectForKey:@"properties"];
-        if (properties && ![self checkObject:value containsConformingProperties:properties error:error]) {
-            return NO;
-        }
-    
         NSDictionary *patternProperties = [schema objectForKey:@"patternProperties"];
-        if (patternProperties && ![self checkObject:value containsConformingPatternProperties:patternProperties error:error]) {
-            return NO;
-        }
-        
         NSDictionary *additionalProperties = [schema objectForKey:@"additionalProperties"];
-        if (additionalProperties && ![self checkObject:value containsConformingAdditionalProperties:additionalProperties error:error]) {
+        if ((properties || patternProperties || additionalProperties) && ![self checkObject:value containsConformingProperties:properties patternProperties:patternProperties additionalProperties:additionalProperties error:error]) {
             return NO;
         }
     } else if ([value isKindOfClass:[NSArray class]]) {
         // Array checks
         NSDictionary *items = [schema objectForKey:@"items"];
-        if (items && ![self checkArray:value containsConformingItems:items error:error]) {
-            return NO;
-        }
-        
         NSDictionary *additionalItems = [schema objectForKey:@"additionalItems"];
-        if (additionalItems && ![self checkArray:value containsConformingAdditionalItems:additionalItems error:error]) {
+        if ((items || additionalItems) && ![self checkArray:value containsConformingItems:items additionalItems:additionalItems error:error]) {
             return NO;
         }
         
@@ -232,7 +241,8 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
 }
 
 #pragma mark - Object 
-- (BOOL)checkObject:(NSDictionary *)aValue containsConformingProperties:(NSDictionary *)properties error:(NSError **)error {
+- (BOOL)checkObject:(NSDictionary *)aValue containsConformingProperties:(NSDictionary *)properties patternProperties:(NSDictionary *)patternProperties additionalProperties:(id)additionalProperties error:(NSError **)error {
+#warning Method not yet fully implemented
     // NSArray *propertiesInValue = [aValue allKeys];
     NSArray *propertiesInSchema = [properties allKeys];
     for (NSString *propertyInSchema in propertiesInSchema) {
@@ -256,32 +266,9 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
     return YES;
 }
 
-- (BOOL)checkObject:(NSDictionary *)value containsConformingPatternProperties:(NSDictionary *)patternProperties error:(NSError **)error {
-    if (error != NULL) {
-        NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
-        *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
-    }
-    return NO;
-}
-
-- (BOOL)checkObject:(NSDictionary *)value containsConformingAdditionalProperties:(id)booleanOrSchema error:(NSError **)error {
-    if (error != NULL) {
-        NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
-        *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
-    }
-    return NO;
-}
-
 #pragma mark - Array 
-- (BOOL)checkArray:(NSArray *)value containsConformingItems:(id)schemaOrSchemas error:(NSError **)error {
-    if (error != NULL) {
-        NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
-        *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
-    }
-    return NO;
-}
-
-- (BOOL)checkArray:(NSArray *)value containsConformingAdditionalItems:(id)booleanOrSchemaOrSchemas error:(NSError **)error {
+- (BOOL)checkArray:(NSArray *)value containsConformingItems:(id)items additionalItems:(id)additionalItems error:(NSError **)error {
+#warning Method not yet implemented
     if (error != NULL) {
         NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
         *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
@@ -290,22 +277,29 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
 }
 
 - (BOOL)checkArray:(NSArray *)value hasMinItems:(int)minItems error:(NSError **)error {
-    if (error != NULL) {
-        NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
-        *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+    if ([value count] < minItems) {
+        if (error != NULL) {
+            NSString *errorString = [NSString stringWithFormat:@"Value %@ contains less than %d items.", value, minItems];
+            *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorTooFewItems userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+        }
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 - (BOOL)checkArray:(NSArray *)value hasMaxItems:(int)maxItems error:(NSError **)error {
-    if (error != NULL) {
-        NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
-        *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+    if ([value count] > maxItems) {
+        if (error != NULL) {
+            NSString *errorString = [NSString stringWithFormat:@"Value %@ contains more than %d items.", value, maxItems];
+            *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorTooManyItems userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+        }
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 - (BOOL)checkArray:(NSArray *)value hasUniqueItems:(BOOL)uniqueItems error:(NSError **)error {
+#warning Method not yet implemented
     if (error != NULL) {
         NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
         *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
@@ -316,6 +310,7 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
 
 #pragma mark - String
 - (BOOL)checkString:(NSString *)value matchesPattern:(NSString *)pattern error:(NSError **)error {
+#warning Method not yet implemented
     if (error != NULL) {
         NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
         *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
@@ -324,30 +319,43 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
 }
 
 - (BOOL)checkString:(NSString *)value hasMinLength:(int)minLength error:(NSError **)error {
-    if (error != NULL) {
-        NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
-        *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+    if ([value length] < minLength) {
+        if (error != NULL) {
+            NSString *errorString = [NSString stringWithFormat:@"Value %@ is shorter than %d characters.", value, minLength];
+            *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorTooShortString userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+        }
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 - (BOOL)checkString:(NSString *)value hasMaxLength:(int)maxLength error:(NSError **)error {
-    if (error != NULL) {
-        NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
-        *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+    if ([value length] > maxLength) {
+        if (error != NULL) {
+            NSString *errorString = [NSString stringWithFormat:@"Value %@ is longer than %d characters.", value, maxLength];
+            *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorTooLongString userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+        }
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 - (BOOL)checkString:(NSString *)value isInEnum:(NSArray *)enumeration error:(NSError **)error {
-    if (error != NULL) {
-        NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
-        *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+    NSUInteger valueIndex = [enumeration indexOfObject:value];
+    if (valueIndex == NSNotFound) {
+        if (error != NULL) {
+            NSString *errorString = [NSString stringWithFormat:@"Value %@ is not equal to %@.", value, [enumeration componentsJoinedByString:@" or "]];
+            *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorNotEnumeratedString userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
+        }
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 - (BOOL)checkString:(NSString *)value conformsToFormat:(NSString *)format error:(NSError **)error {
+#warning Method not yet implemented
+    NSLog(@"String '%@' may or may not conform to format '%@'", value, format);
+    return YES;
     if (error != NULL) {
         NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
         *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
@@ -372,7 +380,6 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
         }
         return NO;
     }
-
     return YES;
 }
 
@@ -391,11 +398,11 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
         }
         return NO;
     }
-    
     return YES;
 }
 
 - (BOOL)checkNumber:(NSNumber *)value conformsToFormat:(NSString *)format error:(NSError **)error {
+#warning Method not yet implemented
     if (error != NULL) {
         NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
         *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];
@@ -404,6 +411,7 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
 }
 
 - (BOOL)checkNumber:(NSNumber *)value isDivisibleBy:(NSNumber *)divider error:(NSError **)error {
+#warning Method not yet implemented
     if (error != NULL) {
         NSString *errorString = [NSString stringWithFormat:@"Method %s not yet implemented.", __PRETTY_FUNCTION__];
         *error = [NSError errorWithDomain:KVJSONValidatorDomain code:KVJSONValidatorErrorGeneral userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorString, NSLocalizedDescriptionKey, nil]];

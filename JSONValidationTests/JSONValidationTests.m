@@ -44,7 +44,7 @@
     
     NSError *error;
     // NSString *filePath = [[NSBundle mainBundle] pathForResource:@"schema" ofType:@""];
-    NSString *fileContent = [NSString stringWithContentsOfFile:@"/Users/jkool/Developer/JSONValidation/Documentation/schema" usedEncoding:NULL error:&error];
+    NSString *fileContent = [NSString stringWithContentsOfFile:@"/Users/jkool/Developer/Frameworks/Koolistov/JSONValidation/Documentation/schema" usedEncoding:NULL error:&error];
     schemaSchema = [[fileContent JSONValue] retain];
 }
 
@@ -62,7 +62,7 @@
     valid = [validator validateJSONValue:schemaSchema withSchema:schemaSchema error:&error];
     STAssertTrue(valid, @"Expected valid schema. (error: %@)", error);
     
-    NSString *fileContent = [NSString stringWithContentsOfFile:@"/Users/jkool/Developer/JSONValidation/Documentation/hyper-schema" usedEncoding:NULL error:&error];
+    NSString *fileContent = [NSString stringWithContentsOfFile:@"/Users/jkool/Developer/Frameworks/Koolistov/JSONValidation/Documentation/hyper-schema" usedEncoding:NULL error:&error];
     STAssertNotNil(fileContent, @"Expected no error. (error: %@)", error);
     NSString *hyperSchema = [fileContent JSONValue];
     STAssertNotNil(hyperSchema, @"Expected text. (error: %@)", error);

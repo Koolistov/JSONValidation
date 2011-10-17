@@ -174,11 +174,18 @@ NSString *const KVJSONValidatorDomain = @"KVJSONValidatorDomain";
         allowedTypes = [NSArray arrayWithObject:typeOrTypes];
     } else if ([typeOrTypes isKindOfClass:[NSArray class]]) {
         allowedTypes = typeOrTypes;
+    } else if ([typeOrTypes isKindOfClass:[NSDictionary class]]) {
+#warning Not handled currently!
+        return YES;
     }
     
     BOOL foundAllowedType = NO;
     for (NSString *type in allowedTypes) {
-        if ([type isEqualToString:@"string"]) {
+        if ([type isKindOfClass:[NSDictionary class]]) {
+#warning Not handled currently!
+            foundAllowedType = YES;
+            break;
+        } else if ([type isEqualToString:@"string"]) {
             if ([aValue isKindOfClass:[NSString class]]) {
                 foundAllowedType = YES;
                 break;

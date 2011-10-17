@@ -50,9 +50,7 @@ typedef enum {
     KVJSONValidatorErrorTooBigNumber
 } KVJSONValidatorError;
 
-@interface KVJSONValidator : NSObject {
-    
-}
+@interface KVJSONValidator : NSObject
 
 - (BOOL)validateJSONSchema:(NSDictionary *)schema error:(NSError **)error;
 - (BOOL)validateJSONValue:(id)value withSchema:(NSDictionary *)schema error:(NSError **)error;
